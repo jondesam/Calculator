@@ -63,8 +63,7 @@ class ViewController: UIViewController {
             print("this is displayValue when numButtenPressed \(displayValue)")
         }
 
-        //displayLabel.text = sender.currentTitle!
-        //What should happen when a number is entered into the keypad
+     
         
     }
     
