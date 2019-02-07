@@ -13,7 +13,6 @@ class ViewController: UIViewController {
             guard let currentValue = Double(displayLabel.text!) else {
                 fatalError("Cannot convert display labeltext to a double ")
             }
-            //     print("this is value on screen \(currentValue)")
             return currentValue
         }
         set {
@@ -27,19 +26,13 @@ class ViewController: UIViewController {
             else {
                 displayLabel.text = String(newValue)
             }
-            //   print("This final result \(displayLabel.text)")
         }
     }
     
     @IBAction func numButtonPressed(_ sender: UIButton) {
         print("numButtonPressed")
         calculator.numButtonPressed = true
-        let tempNum:String = sender.currentTitle!
-        
-        guard let tempDouble = Double(tempNum) else {
-            fatalError("")
-        }
-        
+
         if let currentNumValue = sender.currentTitle {
             if displayLabel.text == "0" && currentNumValue == "."{//case of "."button pressed for first attempt
                 displayLabel.text = "0."
@@ -67,32 +60,27 @@ class ViewController: UIViewController {
                         else if displayLabel.text == "0" && currentNumValue == "0"  {
                             displayLabel.text = currentNumValue
                         }
-                        
                     }
                 }
             }
             
         }
         
-
         var doubleValue:Double = 0
         
         if let double = Double(displayLabel.text!)  {
             doubleValue = double
         }
         
-        var valueProcessed:Double = 0
-        
-        valueProcessed = doubleValue
-        
         if  calculator.calButtonPressedBefore == false {
-            calculator.setNumber(valueProcessed)
-            calculator.setTempNum(valueProcessed)
+            calculator.setNumber(doubleValue)
+            calculator.setTempNum(doubleValue)
             
         } else if calculator.calButtonPressedBefore == true {
-            calculator.setNumber2(valueProcessed)
+            calculator.setNumber2(doubleValue)
         }
     }
+    
     
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         
@@ -118,10 +106,8 @@ class ViewController: UIViewController {
         } else {
 //when calcButton pressed with Num value
             if let calcMethod = sender.currentTitle {
-                print("this is symbol that pssed in \(calcMethod)")
                 
                 if let result = calculator.calculate(symbol: calcMethod) {
-                    print("this is result \(result)")
                     displayValue = result
                     calculator.setTempNum(result)
                 }

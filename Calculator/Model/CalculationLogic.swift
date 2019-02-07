@@ -45,17 +45,15 @@ struct CalculationLogic {
                 return number1 * -1
                 
             case "AC":
-                print("This is AC")
-                tempSymbol = nil
-                number1 = 0
-                number2 = 0
-                tempNum = 0
-                numButtonPressed = false
-                calButtonPressedBefore = false
+                
+                reset()
 
                 return 0
+                
             case "%":
+                
                 return number1 * 0.01
+            
             case "=":
                 
                 return performTwoNumCalculation(n2: number2)
